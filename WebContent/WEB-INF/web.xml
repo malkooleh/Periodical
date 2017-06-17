@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+    <display-name>Periodical</display-name>
+
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/periodical</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <!--============================================================
+	    Controller
+    =============================================================-->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>ua.nure.malko.Periodical.web.servlets.Controller</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
+
+    <!--============================================================
+	    EncodingFilter
+    =============================================================-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ua.nure.malko.Periodical.web.filters.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/login.jsp</url-pattern>
+        <servlet-name>Controller</servlet-name>
+    </filter-mapping>
+
+    <!--============================================================
+	    CommandAccessFilter
+    =============================================================-->
+    <filter>
+        <filter-name>CommandAccessFilter</filter-name>
+        <filter-class>ua.nure.malko.Periodical.web.filters.CommandAccessFilter</filter-class>
+        <init-param>
+            <param-name>admin</param-name>
+            <param-value>listSubscriptions</param-value>
+        </init-param>
+        <init-param>
+            <param-name>client</param-name>
+            <param-value>listPeriodicals</param-value>
+        </init-param>
+        <init-param>
+            <param-name>common</param-name>
+            <param-value>logout noCommand viewSettings makeOrder</param-value>
+        </init-param>
+        <init-param>
+            <param-name>out-of-control</param-name>
+            <param-value>login</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CommandAccessFilter</filter-name>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>ua.nure.malko.Periodical.web.listeners.ContextListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>ua.nure.malko.Periodical.web.servlets.SignUpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+
+</web-app>

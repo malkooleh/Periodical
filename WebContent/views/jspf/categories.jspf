@@ -1,0 +1,18 @@
+<%@ page pageEncoding="UTF-8" %>
+<div>
+    <h4>Categories</h4>
+    <ul class="nav">
+
+
+        <li><a href="controller?command=listPeriodicals&category_id=0">All periodicals</a></li>
+
+        <c:forEach var="category" items="${categories}">
+
+            <c:if test="${not empty category.id}">
+                <li><a href="controller?command=listPeriodicals&category_id=${category.id}">${category.name}</a></li>
+            </c:if>
+
+        </c:forEach>
+
+    </ul>
+</div>
