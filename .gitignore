@@ -1,0 +1,14 @@
+target
+.idea/
+.settings/
+*.iml
+*.class
+/classes/
+
+# Log Files
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
