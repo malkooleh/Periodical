@@ -1,0 +1,165 @@
+ul.nav a, ul.nav a:visited {
+    padding: 5px 5px 5px 15px;
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    background-color: #eeeeee;
+    width: 1000px;
+    margin: 0 auto;
+    height: 800px;
+}
+
+.header {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    overflow: hidden;
+    background-color: #787878;
+}
+
+.header div {
+    float: left;
+}
+
+.header a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 16px;
+    float: left;
+    border-right: 1px solid #bbb
+}
+
+.header a:hover {
+    background-color: #333333;
+}
+
+#rightHeader {
+    float: right;
+}
+
+#rightHeader a {
+    border-right: none;
+}
+
+.search_form {
+    margin: 20px;
+    text-align: left;
+    background-color: #dbe4f6;
+    height: 35px;
+    vertical-align: middle;
+    padding: 5px;
+    float: left;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
+    background-color: #FFFFFF;
+    color: #999;
+}
+
+.search_button {
+    -moz-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+    background: -moz-linear-gradient(center top, #79bbff 5%, #378de5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+    background-color: #79bbff;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #528ecc;
+}
+
+.search_button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
+    background: -moz-linear-gradient(center top, #378de5 5%, #79bbff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+    background-color: #378de5;
+    cursor: pointer;
+}
+
+.search_button:active {
+    position: relative;
+    top: 1px;
+}
+
+.periodical_list {
+    overflow: hidden;
+    width: 100%;
+}
+
+.periodical_list div {
+    float: left;
+}
+
+.categories {
+    width: 25%;
+}
+
+.periodicals_info {
+    width: 75%;
+    padding-left: 10px;
+}
+
+#periodical_title {
+    float: left;
+    height: 50px;
+}
+
+#periodical_title p {
+    color: #378de5;
+    font-family: arial, serif;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+#item {
+    width: 200px;
+    height: 300px;
+    font-size: 12px;
+    float: left;
+    margin: 15px;
+    text-align: center;
+}
+
+#periodical_image {
+    height: 210px;
+    width: 100%;
+    float: left;
+}
+
+#p_details {
+    height: 40px;
+    float: left;
+}

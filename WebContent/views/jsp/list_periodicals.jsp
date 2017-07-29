@@ -1,55 +1,55 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ include file="/views/jspf/directive/page.jspf" %>
 <%@ include file="/views/jspf/directive/taglib.jspf" %>
-
+<%@ page pageEncoding="UTF-8" %>
 <html>
 
-<c:set var="title" value="Periodicals" scope="page"/>
+<c:set var="title" value="Periodicals"/>
 <%@ include file="/views/jspf/head.jspf" %>
 
-<body>
-<table id="main-container">
+<link href="css/reset.css" rel="stylesheet" type="text/css">
+<link href="css/style_periodicals.css" rel="stylesheet" type="text/css">
 
-    <%@ include file="/views/jspf/header.jspf" %>
+<%@ include file="/views/jspf/header.jspf" %>
+
+<body class="container">
+
+<div class="search_form">
+    <form name="search_form" method="POST">
+        <input type="text" name="search_String" value="" size="100"/>
+        <input class="search_button" type="submit" value="Поиск" name="search_button"/>
+        <select name="search_option">
+            <option>Название</option>
+            <option>Автор</option>
+        </select>
+    </form>
+</div>
+
+<div class="periodical_list">
+
     <%@include file="/views/jspf/categories.jspf" %>
 
-    <div class="periodical_info">
-        <tr>
-            <td class="content">
+    <div class="periodicals_info">
 
-                <form id="make_order" action="controller">
-                    <input type="hidden" name="command" value="makeOrder"/>
-                    <input value="Make an order" type="submit"/>
+        <c:set var="index" value="0"/>
+        <c:forEach var="item" items="${periodicals}">
+            <div id="item">
+                <div id="periodical_title">
+                    <p> ${item.name}</p>
+                </div>
+                <div id="periodical_image">
+                    <img src="<%request.getContextPath();%>/showImage?index=${index}" alt="Обложка" height="210px"
+                         width="100%"/>
+                </div>
+                <div id="p_details">
+                    <br><strong>Стоимость: </strong>${item.price}<strong>грн.</strong>
+                    <p><a href="#">Просмотреть</a></p>
+                </div>
+            </div>
+            <c:set var="index" value="${index+1}"/>
+        </c:forEach>
 
-                    <table id="list_menu_table">
-                        <thead>
-                        <tr>
-                            <td>N</td>
-                            <td>Name</td>
-                            <td>Price</td>
-                            <td>Order</td>
-                        </tr>
-                        </thead>
-
-                        <c:set var="k" value="0"/>
-                        <c:forEach var="item" items="${periodicals}">
-                            <c:set var="k" value="${k+1}"/>
-                            <tr>
-                                <td><c:out value="${k}"/></td>
-                                <td>${item.name}</td>
-                                <td>${item.price}</td>
-                                <td><input type="checkbox" name="itemId" value="${item.id}"/></td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-
-                </form>
-
-            </td>
-        </tr>
     </div>
 
-    <%@ include file="/views/jspf/footer.jspf" %>
+</div>
 
-</table>
 </body>
+</html>

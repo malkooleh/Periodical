@@ -3,46 +3,44 @@ body {
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
-    background-color: #eaeaea;
-    margin:100px;
-}
-.main {
-    background-color: #FFF;
-    width: 1000px;
-    height:550px;
-    margin:0 auto;
-    padding:20px;
-}
-.title {
-    color: #000;
-    text-align:center;
-    font-size:18px;
-    font-weight:bold;
-
-}
-
-.text{
-    padding-left:50px;
-    padding-right:50px;
-}
-
-.login_form{
-    padding-left:50px;
-    text-align: center;
+    margin: 0 auto;
     padding: 20px;
 }
 
-.footer{
-    color:#cccccc;
-    height: 50px;
-    text-align: center;
-    margin:50px;
+.main {
+    background-color: #eeeeee;
+    width: 1000px;
+    height: 550px;
 }
 
-.periodical_info{
-    width: 210px;
-    height: 450px;
-    font-size: 12px;
-    float:left;
-    margin:15px;
+.title {
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 14px;
+}
+
+.text {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+}
+
+.login_form {
+    padding-left: 50px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+input{ margin-bottom: 12px;}
+
+#login, #password { border: 2px solid grey; padding: 3px; }
+#login:focus, #password:focus { background: lightyellow; border-color: blue; outline: none; }
+
+.footer {
+    color: #000000;
+    height: 20px;
+    text-align: left;
+    padding: 50px;
 }
