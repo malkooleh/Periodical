@@ -1,10 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
-<div>
-    <h4>Categories</h4>
+<div class="categories">
+
     <ul class="nav">
 
-
-        <li><a href="controller?command=listPeriodicals&category_id=0">All periodicals</a></li>
+        <li><a href="controller?command=listPeriodicals&category_id=0">Все издания</a></li>
 
         <c:forEach var="category" items="${categories}">
 

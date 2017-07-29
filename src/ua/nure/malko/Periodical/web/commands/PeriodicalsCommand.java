@@ -14,6 +14,7 @@ import ua.nure.malko.Periodical.db.DBManager;
 import ua.nure.malko.Periodical.db.entity.Category;
 import ua.nure.malko.Periodical.db.entity.Periodical;
 import ua.nure.malko.Periodical.exception.AppException;
+import ua.nure.malko.Periodical.exception.DBException;
 
 /**
  * Lists menu items.
@@ -28,8 +29,12 @@ public class PeriodicalsCommand extends Command {
 
         System.err.println( "Command starts" );
 
+        String categoryId = request.getParameter( "category_id" );
+        System.err.println( "category_id = " + categoryId);
+
         // get periodicals list
-        List<Periodical> periodicals = DBManager.getInstance().getDAOFactory().getPeriodicalDAO().findAll();
+        List<Periodical> periodicals = getListPeriodicals( categoryId, request );
+        System.err.println("List<Periodical> periodicals - " + periodicals.size() );
         List<Category> categories = DBManager.getInstance().getDAOFactory().getCategoryDAO().findAll();
         // sort periodicals by category
         Collections.sort( periodicals, new Comparator<Periodical>() {
@@ -39,11 +44,23 @@ public class PeriodicalsCommand extends Command {
         } );
 
         // put periodicals list to the request
-        request.setAttribute( "periodicals", periodicals );
+        request.getSession( false ).setAttribute( "periodicals", periodicals );
         request.setAttribute( "categories", categories );
 
         System.err.println( "Command finished" );
         return Path.PAGE_LIST_PERIODICALS;
+    }
+
+    private List<Periodical> getListPeriodicals(String categoryId, HttpServletRequest request) throws DBException {
+        List<Periodical> list;
+        if (categoryId == null || Long.parseLong( categoryId ) == 0) {
+            list = DBManager.getInstance().getDAOFactory().getPeriodicalDAO().findAll();
+        } else if (request.getAttribute( "periodicals" ) == null){
+            list = DBManager.getInstance().getDAOFactory().getPeriodicalDAO().findByCategoryID( Long.parseLong( categoryId ) );
+        } else {
+            list = (List<Periodical>) request.getAttribute( "periodicals" );
+        }
+        return list;
     }
 
 }
