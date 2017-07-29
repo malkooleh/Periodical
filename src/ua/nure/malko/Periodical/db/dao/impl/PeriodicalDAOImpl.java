@@ -112,6 +112,7 @@ class PeriodicalDAOImpl implements PeriodicalDAO {
             periodical.setName( rs.getString( Fields.PERIODICAL_NAME ) );
             periodical.setPrice( rs.getInt( Fields.PERIODICAL_PRICE ) );
             periodical.setCategoryId( rs.getLong( Fields.PERIODICAL_CATEGORY_ID ) );
+            periodical.setImage( rs.getBytes( Fields.PERIODICAL_IMAGE ) );
         } catch (SQLException e) {
             throw new DBException( e.getMessage() );
         }
@@ -136,14 +137,17 @@ class PeriodicalDAOImpl implements PeriodicalDAO {
     }
 
     @Override
-    public List<Periodical> findByCategoryID(int categoryId) throws DBException {
+    public List<Periodical> findByCategoryID(long categoryId) throws DBException {
         List<Periodical> periodicalList = new ArrayList<>();
-        try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery( SQL_FIND_PERIODICALS_BY_CATEGORY_ID )) {
+        ResultSet rs = null;
+        try (PreparedStatement pst = con.prepareStatement( SQL_FIND_PERIODICALS_BY_CATEGORY_ID )) {
+            pst.setLong( 1, categoryId );
+            rs = pst.executeQuery();
             while (rs.next()) {
                 periodicalList.add( extract( rs ) );
             }
         } catch (SQLException e) {
-            System.err.println( "Error List<Periodical> findAll()" );
+            System.err.println( "Error List<Periodical> findByCategoryID()" );
             throw new DBException( e.getMessage() );
         }
         return periodicalList;

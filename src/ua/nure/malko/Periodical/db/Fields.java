@@ -34,5 +34,5 @@ public final class Fields {
 	public static final String PERIODICAL_NAME = "name";
 	public static final String PERIODICAL_PRICE = "price";
 	public static final String PERIODICAL_CATEGORY_ID = "category_id";
-	
+	public static final String PERIODICAL_IMAGE = "image";
 }

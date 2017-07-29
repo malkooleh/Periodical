@@ -10,6 +10,6 @@ public interface PeriodicalDAO extends GenericDao<Periodical> {
 
     Periodical findByName(String name) throws DBException;
 
-    List<Periodical> findByCategoryID(int categoryId) throws DBException;
+    List<Periodical> findByCategoryID(long categoryId) throws DBException;
 
 }
