@@ -1,4 +1,2 @@
 
-<tr>
-	<td id="footer">&copy;Periodical, EPAM-KNURE Java Training, 2017</td>
-</tr>
+	<div class="footer">&copy;Periodical, EPAM-KNURE Java Training, 2017</div>

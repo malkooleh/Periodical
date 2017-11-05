@@ -28,7 +28,7 @@ public class ShowImageServlet extends HttpServlet {
             System.err.println( "index = " + index );
             ArrayList<Periodical> list = (ArrayList<Periodical>)request.getSession( false ).getAttribute( "periodicals" );
             Periodical periodical = list.get( index );
-            System.err.println( "Periodical name" + periodical.getName() );
+            System.err.println( "Periodical name " + periodical.getName() );
             response.setContentLength( periodical.getImage().length );
             out.write( periodical.getImage() );
         }

@@ -20,8 +20,14 @@ public class DBManager {
     private static DBManager instance = null;
 
     private DataSource dataSource;
+    private Connection connection;
 
     private DBManager() {
+        try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch (ClassNotFoundException ex) {
+            //LOG.error( Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex );
+        }
 //        try {
 //            Context initContext = new InitialContext();
 //            dataSource = (DataSource) initContext.lookup( "java:comp/env/jdbc/periodical" );
@@ -40,14 +46,13 @@ public class DBManager {
     }
 
     private Connection getConnection() throws DBException {
-        Connection con;
         try {
-            con = dataSource.getConnection();
+            connection = dataSource.getConnection();
         } catch (SQLException ex) {
             //LOG.error( Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex );
             throw new DBException( Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex );
         }
-        return con;
+        return connection;
     }
 
     public void beginTransaction() throws DBException {
@@ -89,12 +94,6 @@ public class DBManager {
     }
 
     private Connection getConnectionWithDriverManager() throws DBException {
-        try {
-            Class.forName( "com.mysql.jdbc.Driver" );
-        } catch (ClassNotFoundException ex) {
-            //LOG.error( Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex );
-        }
-        Connection connection;
         try {
             connection = DriverManager
                     .getConnection( "jdbc:mysql://localhost:3306/periodical", "root", "root" );

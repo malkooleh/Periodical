@@ -14,12 +14,8 @@
 
 <div class="search_form">
     <form name="search_form" method="POST">
-        <input type="text" name="search_String" value="" size="100"/>
+        <input type="text" name="search_string" value="${search_string}" size="100"/>
         <input class="search_button" type="submit" value="Поиск" name="search_button"/>
-        <select name="search_option">
-            <option>Название</option>
-            <option>Автор</option>
-        </select>
     </form>
 </div>
 
@@ -44,7 +40,7 @@
                     <p><a href="#">Просмотреть</a></p>
                 </div>
             </div>
-            <c:set var="index" value="${index+1}"/>
+            <c:set var="index" value="${index+1}"></c:set>
         </c:forEach>
 
     </div>

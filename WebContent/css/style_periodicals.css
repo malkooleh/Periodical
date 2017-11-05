@@ -52,18 +52,18 @@ body {
     float: right;
 }
 
-#rightHeader a {
+#rightHeader a:last-child {
     border-right: none;
 }
 
 .search_form {
-    margin: 20px;
+    margin: 20px 0;
     text-align: left;
     background-color: #dbe4f6;
     height: 35px;
     vertical-align: middle;
     padding: 5px;
-    float: left;
+    float: right;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -78,9 +78,9 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
 }
 
 .search_button {
-    -moz-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
-    box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    -moz-box-shadow: inset 0 1px 0 0 #bbdaf7;
+    -webkit-box-shadow: inset 0 1px 0 0 #bbdaf7;
+    box-shadow: inset 0 1px 0 0 #bbdaf7;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
     background: -moz-linear-gradient(center top, #79bbff 5%, #378de5 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
@@ -88,15 +88,15 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
-    border: 1px solid #84bbf3;
+    /*border: 1px solid #84bbf3;*/
     display: inline-block;
     color: #ffffff;
-    font-family: arial;
+    font-family: arial, serif;
     font-size: 15px;
     font-weight: bold;
     padding: 6px 24px;
     text-decoration: none;
-    text-shadow: 1px 1px 0px #528ecc;
+    text-shadow: 1px 1px 0 #528ecc;
 }
 
 .search_button:hover {
@@ -127,7 +127,6 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
 
 .periodicals_info {
     width: 75%;
-    padding-left: 10px;
 }
 
 #periodical_title {
@@ -149,7 +148,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     height: 300px;
     font-size: 12px;
     float: left;
-    margin: 15px;
+    margin: 12px;
     text-align: center;
 }
 

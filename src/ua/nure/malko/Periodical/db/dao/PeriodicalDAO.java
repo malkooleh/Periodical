@@ -12,4 +12,5 @@ public interface PeriodicalDAO extends GenericDao<Periodical> {
 
     List<Periodical> findByCategoryID(long categoryId) throws DBException;
 
+    List<Periodical> findBySearch(String searchStr) throws DBException;
 }

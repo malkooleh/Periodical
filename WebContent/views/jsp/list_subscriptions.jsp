@@ -1,4 +1,3 @@
-<%@ include file="/views/jspf/directive/page.jspf" %>
 <%@ include file="/views/jspf/directive/taglib.jspf" %>
 
 <html>

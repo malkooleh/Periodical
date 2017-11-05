@@ -1,5 +1,4 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="/views/jspf/directive/page.jspf" %>
 <%@ include file="/views/jspf/directive/taglib.jspf" %>
 
 <html>

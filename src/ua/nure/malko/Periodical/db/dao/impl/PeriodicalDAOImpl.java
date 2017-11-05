@@ -30,6 +30,7 @@ class PeriodicalDAOImpl implements PeriodicalDAO {
     private static final String SQL_INSERT_PERIODICAL = "INSERT INTO periodicals " + "(name, price, category_id) VALUES "
             + "(?, ?, ?)";
     private static final String SQL_DELETE_PERIODICAL = "DELETE FROM periodicals WHERE id=?";
+    private static final String SQL_FIND_PERIODICALS_BY_SEARCHSTRING = "SELECT * FROM periodicals p WHERE LOWER(p.name)";
 
     @Override
     public List<Periodical> findAll() throws DBException {
@@ -148,6 +149,21 @@ class PeriodicalDAOImpl implements PeriodicalDAO {
             }
         } catch (SQLException e) {
             System.err.println( "Error List<Periodical> findByCategoryID()" );
+            throw new DBException( e.getMessage() );
+        }
+        return periodicalList;
+    }
+
+    @Override
+    public List<Periodical> findBySearch(String searchStr) throws DBException {
+        String search = "like '%" + searchStr.toLowerCase() + "%' order by p.name ";
+        List<Periodical> periodicalList = new ArrayList<>();
+        try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery( SQL_FIND_PERIODICALS_BY_SEARCHSTRING + search )) {
+            while (rs.next()) {
+                periodicalList.add( extract( rs ) );
+            }
+        } catch (SQLException e) {
+            System.err.println( "Error findBySearch(String searchStr) " );
             throw new DBException( e.getMessage() );
         }
         return periodicalList;

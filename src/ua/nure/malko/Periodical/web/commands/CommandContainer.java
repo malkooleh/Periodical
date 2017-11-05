@@ -1,5 +1,7 @@
 package ua.nure.malko.Periodical.web.commands;
 
+import ua.nure.malko.Periodical.exception.DBException;
+
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -21,7 +23,11 @@ public class CommandContainer {
         commands.put( "makeOrder", new MakeOrderCommand() );
 
         // client commands
-        commands.put( "listPeriodicals", new PeriodicalsCommand() );
+        try {
+            commands.put( "listPeriodicals", new PeriodicalsCommand() );
+        } catch (DBException e) {
+            e.printStackTrace();
+        }
 
         // admin commands
         commands.put( "listSubscriptions", new ListSubscriptionsCommand() );

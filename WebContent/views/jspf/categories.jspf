@@ -5,9 +5,13 @@
 
         <li><a href="controller?command=listPeriodicals&category_id=0">Все издания</a></li>
 
+        <c:set var="req_category" value="${category_id}"></c:set>
         <c:forEach var="category" items="${categories}">
 
-            <c:if test="${not empty category.id}">
+            <c:if test="${category.id == req_category}">
+                <li><a style="color: #378de5" href="controller?command=listPeriodicals&category_id=${category.id}">${category.name}</a></li>
+            </c:if>
+            <c:if test="${category.id ne 0 and category.id != req_category }">
                 <li><a href="controller?command=listPeriodicals&category_id=${category.id}">${category.name}</a></li>
             </c:if>
 
